@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Hackfinity Battle CTF 2025 &middot; </title>
+        <meta name="description" content="Collection of writeups for Hackfinity Battle CTF 2025 challenges.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.148.2">
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://r4p3cks.github.io/dist/site.css">
+        <link rel="stylesheet" href="https://r4p3cks.github.io/dist/syntax.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+        
+        
+        
+
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a href="https://r4p3cks.github.io/">R4p3cks Blog</a>
+                            </h1>
+                        
+                        
+                        
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" aria-label="Github" href="https://github.com/R4p3cks" rel="me">
+                                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Hackfinity Battle CTF 2025</h1>
+    
+        <p class="post-description" itemprop="description">Collection of writeups for Hackfinity Battle CTF 2025 challenges.</p>
+    
+    <p class="post-date post-line">
+        <span>Published <time datetime="2025-03-19" itemprop="datePublished">Wed, Mar 19, 2025</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="#" itemprop="url" rel="author">Reber</a>
+            </span>
+        </span>
+    </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <h2 id="hackfinity-battle-ctf-2025-writeups">Hackfinity Battle CTF 2025 Writeups</h2>
+<p>This document contains writeups for the challenges from the Hackfinity Battle CTF 2025.</p>
+<h2 id="catch-me-if-you-can">Catch Me If You Can</h2>
+<h3 id="challenge">Challenge</h3>
+<p>Thanks to Void&rsquo;s l33t hacking skills, we obtained some CCTV footage from 2022 that might help us track Cipher&rsquo;s location. Our intel tells us that the individual caught on the CCTV footage that day was one of Cipher&rsquo;s accomplices. They were planning to meet up at one of Cipher&rsquo;s safe houses.
+We have this image of Cipher&rsquo;s accomplice, Phicer, leaving a restaurant.
+Can you and Specter find the name of the burger restaurant?</p>
+<p>Flag format: <strong>THM{restaurant_name}</strong>, separate words with underscores, and no capital letters .</p>
+<p>For example: <strong>THM{the_best_pizza}</strong>.</p>
+<p>It is also provided the CCTV image.</p>
+<p><img src="https://github.com/r4p3cks/hackfinity-battle-ctf-2025/blob/main/Catch%20Me%20If%20You%20Can/assets/Beco-OSINT-1741020774699.png" alt="CCTV-Image"></p>
+<h3 id="solution">Solution</h3>
+<p>Investigating the image, we can find a plate saying &ldquo;Beco do Batman&rdquo;.</p>
+<p><img src="https://github.com/user-attachments/assets/8a991745-f815-4bac-8e6b-ebc9cb08312a" alt="image"></p>
+<p>With google maps help, we can search Beco do Batman and get a location in Sao Paulo.</p>
+<p><img src="https://github.com/user-attachments/assets/adb02983-6495-4746-9103-e0565331412c" alt="image"></p>
+<p>With a little search, we found that this is the exact location and the burger restaurant mentioned.</p>
+<p><img src="https://github.com/user-attachments/assets/19dd7a73-746e-4846-861b-ced7f61ee02b" alt="image"></p>
+<p><img src="https://github.com/user-attachments/assets/7c7d24a0-2ae9-4e79-83eb-736fdcbd9364" alt="image"></p>
+<p>The requested restaurant is Coringa do Beco!</p>
+
+</div>
+
+        <footer class="post-footer clearfix"><div class="share">
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+</div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a href="https://r4p3cks.github.io/">R4p3cks Blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#" aria-label="Back to Top">
+                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                
+                <p class="footer-copyright">
+                    <span>&copy; 2025 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://r4p3cks.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://r4p3cks.github.io/js/jquery.fitvids.js"></script>
+        <script src="https://r4p3cks.github.io/js/scripts.js"></script>
+        
+    </body>
+</html>

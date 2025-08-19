@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R4p3cks Blog</title>
+    <link>https://r4p3cks.github.io/</link>
+    <description>Recent content on R4p3cks Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 19 Mar 2025 15:00:00 +0000</lastBuildDate>
+    <atom:link href="https://r4p3cks.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hackfinity Battle CTF 2025</title>
+      <link>https://r4p3cks.github.io/hackfinity-battle-ctf-2025/</link>
+      <pubDate>Wed, 19 Mar 2025 15:00:00 +0000</pubDate>
+      <guid>https://r4p3cks.github.io/hackfinity-battle-ctf-2025/</guid>
+      <description>&lt;h2 id=&#34;hackfinity-battle-ctf-2025-writeups&#34;&gt;Hackfinity Battle CTF 2025 Writeups&lt;/h2&gt;&#xA;&lt;p&gt;This document contains writeups for the challenges from the Hackfinity Battle CTF 2025.&lt;/p&gt;&#xA;&lt;h2 id=&#34;catch-me-if-you-can&#34;&gt;Catch Me If You Can&lt;/h2&gt;&#xA;&lt;h3 id=&#34;challenge&#34;&gt;Challenge&lt;/h3&gt;&#xA;&lt;p&gt;Thanks to Void&amp;rsquo;s l33t hacking skills, we obtained some CCTV footage from 2022 that might help us track Cipher&amp;rsquo;s location. Our intel tells us that the individual caught on the CCTV footage that day was one of Cipher&amp;rsquo;s accomplices. They were planning to meet up at one of Cipher&amp;rsquo;s safe houses.&#xA;We have this image of Cipher&amp;rsquo;s accomplice, Phicer, leaving a restaurant.&#xA;Can you and Specter find the name of the burger restaurant?&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
