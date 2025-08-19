@@ -1,0 +1,14 @@
+baseurl = "https://r4p3cks.github.io/"
+title = "R4p3cks Blog"
+theme = "ghostwriter"
+
+[Params]
+    mainSections = ["post"]
+    intro = true
+    headline = "R4p3cks Writeups"
+    description = "CTF writeups by R4p3cks"
+    github = "https://github.com/R4p3cks"
+    dateFormat = "Mon, Jan 2, 2006"
+
+[Permalinks]
+    post = "/:filename/"
