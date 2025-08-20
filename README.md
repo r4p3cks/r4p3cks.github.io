@@ -19,7 +19,9 @@ To update the blog, please follow these steps:
 
 2. **Create a new branch** for your posts or updates:
 
-3. **Add your posts** in the blog/content directory and images in the blog/static directory.
+3. **Add your posts** in the blog/content directory **and images** in the blog/static directory. Example for Hackfinity Battle 2025:
+   - Add images or files in `blog/static/hackfinity-battle-ctf-2025/`
+   - In the post file, reference the images using relative paths like `![image description](/hackfinity-battle-ctf-2025/image.png)`.
 
 4. **Commit and push your changes**
 
