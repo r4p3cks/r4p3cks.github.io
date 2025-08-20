@@ -24,6 +24,7 @@
         {{ partial "plausible.html" . }}
     </head>
     <body>
+        {{ $root := . }}
         {{ template "_internal/google_analytics.html" . }}
 
         <div id="wrapper">
@@ -31,12 +32,9 @@
                 <div class="container">
                     <div class="site-title-wrapper">
                         {{ with .Site.Params.logo }}
--                            <a class="site-logo" href="{{ .Site.BaseURL }}">
--                                <img src="{{ . }}" alt="{{ .Title }}" />
--                            </a>
-+                            <a class="site-logo" href="{{ $.Site.BaseURL }}">
-+                                <img src="{{ . }}" alt="{{ $.Site.Title }}" />
-+                            </a>
+                            <a class="site-logo" href="{{ $root.Site.BaseURL }}">
+                                <img src="{{ . }}" alt="{{ $root.Site.Title }}" />
+                            </a>
                         {{ else }}
                             <h1 class="site-title">
                                 <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
