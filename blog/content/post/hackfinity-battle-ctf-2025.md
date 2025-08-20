@@ -28,9 +28,9 @@ categories = ["CTF Writeups"]
     - [Ghost Phishing](#ghost-phishing)
       - [Challenge](#challenge-4)
       - [Solution](#solution-4)
-  - [Shadow Phishing](#shadow-phishing)
-    - [Challenge](#challenge-5)
-    - [Solution](#solution-5)
+    - [Shadow Phishing](#shadow-phishing)
+      - [Challenge](#challenge-5)
+      - [Solution](#solution-5)
   - [Web Exploitation Challenges](#web-exploitation-challenges)
     - [Infinity Shell](#infinity-shell)
       - [Challenge](#challenge-6)
@@ -245,9 +245,9 @@ Now the easy part, search for the flag. It is said that we need the Administrato
 
 ![image](/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/remoteaccess.png)
 
-### Shadow Phishing
+#### Shadow Phishing
 
-#### Challenge
+##### Challenge
 
 We gained access to the email account of ShadowByte, one of Cipher's trusted operatives.
 This breakthrough will help bring Cipher's location closer to light and foil his plans for the apocalyptic cyber weapon.
@@ -257,7 +257,7 @@ __Username:__ <mailto:shadowbyte@darknetmail.corp>
 
 __Password:__ ShadowIsTheBest
 
-#### Solution
+##### Solution
 
 When accessing the ShadowByte email we see this email from Cipher:
 
