@@ -124,12 +124,12 @@
 <li><a href="#solution-4">Solution</a></li>
 </ul>
 </li>
-</ul>
-</li>
 <li><a href="#shadow-phishing">Shadow Phishing</a>
 <ul>
 <li><a href="#challenge-5">Challenge</a></li>
 <li><a href="#solution-5">Solution</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#web-exploitation-challenges">Web Exploitation Challenges</a>
@@ -295,14 +295,14 @@ Using ncat for that:</p>
 <p><img src="/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/thirdemail.png" alt="image"></p>
 <p>Now the easy part, search for the flag. It is said that we need the Administrator flag. So we looked in Administrator user and found the flag in the Desktop directory.</p>
 <p><img src="/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/remoteaccess.png" alt="image"></p>
-<h3 id="shadow-phishing">Shadow Phishing</h3>
-<h4 id="challenge-5">Challenge</h4>
+<h4 id="shadow-phishing">Shadow Phishing</h4>
+<h5 id="challenge-5">Challenge</h5>
 <p>We gained access to the email account of ShadowByte, one of Cipher&rsquo;s trusted operatives.
 This breakthrough will help bring Cipher&rsquo;s location closer to light and foil his plans for the apocalyptic cyber weapon.
 The clock is ticking, though too much time and Cipher will know something is wrong and again disappear into the depths of the darknet.  The race against time goes on.</p>
 <p><strong>Username:</strong> <a href="mailto:shadowbyte@darknetmail.corp">mailto:shadowbyte@darknetmail.corp</a></p>
 <p><strong>Password:</strong> ShadowIsTheBest</p>
-<h4 id="solution-5">Solution</h4>
+<h5 id="solution-5">Solution</h5>
 <p>When accessing the ShadowByte email we see this email from Cipher:</p>
 <p><img src="/blog/static/hackfinity-battle-ctf-2025/ShadowPhishing/firstemail.png" alt="image"></p>
 <p>Cipher told ShadowByte that he needs a exe! Like Ghost Phishing challenge, we could create a reverse TCP shell windows executable. For this we used metasploit for a faster and easy way to create this.</p>
