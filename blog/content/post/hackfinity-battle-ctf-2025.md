@@ -7,6 +7,8 @@ tags = ["ctf","osint","cryptography","forensics"]
 categories = ["CTF Writeups"]
 +++
 
+![R4p3cks](/images/R4p3cks.png)
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
