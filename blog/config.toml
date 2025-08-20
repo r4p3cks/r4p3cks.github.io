@@ -8,7 +8,6 @@ theme = "ghostwriter"
     headline = "R4p3cks Writeups"
     description = "CTF writeups by R4p3cks"
     github = "https://github.com/R4p3cks"
-    logo = "/images/R4p3cks.png"
     dateFormat = "Mon, Jan 2, 2006"
 
 [Permalinks]
