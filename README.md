@@ -19,7 +19,7 @@ To update the blog, please follow these steps:
 
 2. **Create a new branch** for your posts or updates:
 
-3. **Add your posts** in the blog/content directory.
+3. **Add your posts** in the blog/content directory and images in the blog/static directory.
 
 4. **Commit and push your changes**
 
