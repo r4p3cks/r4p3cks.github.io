@@ -1,7 +1,7 @@
 +++
 title = "TryHack3M: Bricks Heist"
 description = "Writeup for TryHackMe 3 Million Users Challenge."
-date = 2025-08-21T23:00:00Z
+date = 2025-08-21T20:00:00Z
 author = "Reber"
 tags = ["ctf","osint","cryptography","forensics","wordpress","easy","tryhackme"]
 categories = ["CTF Writeup"]
@@ -11,14 +11,14 @@ categories = ["CTF Writeup"]
 
 ## Table of Contents
 
--[Table of Contents](#table-of-contents)
-    -[Challenge Description](#challenge-description)
-    -[Challenge Walkthrough](#challenge-walkthrough)
-    -[Initial Reconnaissance](#initial-reconnaissance)
-    -[Web Application Analysis](#web-application-analysis)
-    -[Vulnerability Search](#vulnerability-search)
-    -[Post-Exploitation](#post-exploitation)
-    -[Decoding and Blockchain OSINT](#decoding-and-blockchain-osint)
+- [Table of Contents](#table-of-contents)
+  - [Challenge Description](#challenge-description)
+  - [Challenge Walkthrough](#challenge-walkthrough)
+    - [Initial Reconnaissance](#initial-reconnaissance)
+    - [Web Application Analysis](#web-application-analysis)
+    - [Vulnerability Search](#vulnerability-search)
+    - [Post-Exploitation](#post-exploitation)
+  - [Decoding and Blockchain OSINT](#decoding-and-blockchain-osint)
 
 ### Challenge Description
 
@@ -262,7 +262,7 @@ Output:
       redacted.service                                   loaded active     running   TRYHACK3M                                               
       ....
 ```
-
++publishFuture = true
 Now i can answer to the third question: The service name affiliated with the suspicious process is:
 > redacted.service
 
