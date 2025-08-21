@@ -2,34 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://r4p3cks.github.io/post/</loc>
-    <lastmod>2025-08-21T23:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://r4p3cks.github.io/</loc>
-    <lastmod>2025-08-21T23:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://r4p3cks.github.io/categories/</loc>
-    <lastmod>2025-03-19T15:00:00+00:00</lastmod>
+    <lastmod>2025-08-21T20:00:00+00:00</lastmod>
   </url><url>
     <loc>https://r4p3cks.github.io/tags/cryptography/</loc>
-    <lastmod>2025-03-19T15:00:00+00:00</lastmod>
+    <lastmod>2025-08-21T20:00:00+00:00</lastmod>
   </url><url>
     <loc>https://r4p3cks.github.io/tags/ctf/</loc>
-    <lastmod>2025-03-19T15:00:00+00:00</lastmod>
+    <lastmod>2025-08-21T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://r4p3cks.github.io/categories/ctf-writeup/</loc>
+    <lastmod>2025-08-21T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://r4p3cks.github.io/tags/easy/</loc>
+    <lastmod>2025-08-21T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://r4p3cks.github.io/tags/forensics/</loc>
+    <lastmod>2025-08-21T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://r4p3cks.github.io/tags/osint/</loc>
+    <lastmod>2025-08-21T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://r4p3cks.github.io/post/</loc>
+    <lastmod>2025-08-21T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://r4p3cks.github.io/</loc>
+    <lastmod>2025-08-21T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://r4p3cks.github.io/tags/</loc>
+    <lastmod>2025-08-21T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://r4p3cks.github.io/tryhack3m-bricks-heist/</loc>
+    <lastmod>2025-08-21T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://r4p3cks.github.io/tags/tryhackme/</loc>
+    <lastmod>2025-08-21T20:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://r4p3cks.github.io/tags/wordpress/</loc>
+    <lastmod>2025-08-21T20:00:00+00:00</lastmod>
   </url><url>
     <loc>https://r4p3cks.github.io/categories/ctf-writeups/</loc>
     <lastmod>2025-03-19T15:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://r4p3cks.github.io/tags/forensics/</loc>
-    <lastmod>2025-03-19T15:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://r4p3cks.github.io/hackfinity-battle-ctf-2025/</loc>
-    <lastmod>2025-03-19T15:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://r4p3cks.github.io/tags/osint/</loc>
-    <lastmod>2025-03-19T15:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://r4p3cks.github.io/tags/</loc>
     <lastmod>2025-03-19T15:00:00+00:00</lastmod>
   </url>
 </urlset>

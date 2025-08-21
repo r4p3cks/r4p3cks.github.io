@@ -6,8 +6,15 @@
     <description>Recent content in Posts on R4p3cks Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 19 Mar 2025 15:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 Aug 2025 20:00:00 +0000</lastBuildDate>
     <atom:link href="https://r4p3cks.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TryHack3M: Bricks Heist</title>
+      <link>https://r4p3cks.github.io/tryhack3m-bricks-heist/</link>
+      <pubDate>Thu, 21 Aug 2025 20:00:00 +0000</pubDate>
+      <guid>https://r4p3cks.github.io/tryhack3m-bricks-heist/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://r4p3cks.github.io/images/R4p3cks.png&#34; alt=&#34;R4p3cks&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#table-of-contents&#34;&gt;Table of Contents&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#challenge-description&#34;&gt;Challenge Description&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#challenge-walkthrough&#34;&gt;Challenge Walkthrough&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#initial-reconnaissance&#34;&gt;Initial Reconnaissance&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#web-application-analysis&#34;&gt;Web Application Analysis&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#vulnerability-search&#34;&gt;Vulnerability Search&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#post-exploitation&#34;&gt;Post-Exploitation&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#decoding-and-blockchain-osint&#34;&gt;Decoding and Blockchain OSINT&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;challenge-description&#34;&gt;Challenge Description&lt;/h3&gt;&#xA;&lt;p&gt;From Three Million Bricks to Three Million Transactions!&lt;/p&gt;&#xA;&lt;p&gt;Brick Press Media Co. was working on creating a brand-new web theme that represents a renowned wall using three million byte bricks. Agent Murphy comes with a streak of bad luck. And here we go again: the server is compromised, and they&amp;rsquo;ve lost access.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hackfinity Battle CTF 2025</title>
       <link>https://r4p3cks.github.io/hackfinity-battle-ctf-2025/</link>
